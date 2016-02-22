@@ -52,9 +52,10 @@ class GithubOAuth {
                     if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String : AnyObject], token = self.accessTokenFrom(json) {
                         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                             switch options {
-                                case .Keychain: break
+                                case .Keychain: self.saveAccessTokenToKeychain(token)
                                 case .UserDefaults: self.saveAccessTokenToUserDefault(token)
                             }
+                            completion(success: true) 
                         })
                     }
                 } catch _ { completion(success: false) }

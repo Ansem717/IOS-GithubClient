@@ -428,6 +428,7 @@
 				E961DAE11C7B705D007B3288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E961DAE21C7B705D007B3288 /* Build configuration list for PBXNativeTarget "GithubClientTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +437,7 @@
 				E961DAE41C7B705D007B3288 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
