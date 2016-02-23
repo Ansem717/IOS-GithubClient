@@ -23,8 +23,13 @@ class HomeViewController: UIViewController, Identity {
     }
     
     @IBAction func printReposButton(sender: UIButton) {
-        API.shared.enqueue(GETRepoRequest()) { (success, json) -> () in
-            //
+        Repositories.update { (success, repos) -> () in
+            if success {
+//                print("============================================================================================================")
+                for repo in repos {
+//                    print(repo.name)
+                }
+            }
         }
     }
 }

@@ -23,8 +23,12 @@ class API {
             if error == nil {
                 if let data = data {
                     do {
-                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String: AnyObject] {
-                            print(json)
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [[String: AnyObject]] {
+                            print(json[0])
+                            completion(success: true, json: json)
+                        }
+                        if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String : AnyObject] {
+                            completion(success: true, json: [json])
                         }
                     } catch _ {}
                 }

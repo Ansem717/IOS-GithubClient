@@ -28,12 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
 
-                    //VIEW CONTROLLER ALPHA can be set to fade out.
+                    oauthVC.view.alpha = 0.0
                     
                     }, completion: { (finished) -> Void in
                         
-                        //REMOVE FROM SUPER VIEW
-                        //REMOVE FROM PARENT VIEW
+                        oauthVC.view.removeFromSuperview()
+                        oauthVC.removeFromParentViewController()
                 })
             }
         }

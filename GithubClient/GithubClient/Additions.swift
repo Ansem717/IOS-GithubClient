@@ -41,7 +41,7 @@ extension NSMutableURLRequest {
         }
         
         request.URL = reqURL
-        request.HTTPMethod = apiRequest.httpMethod
+        request.HTTPMethod = apiRequest.httpMethod.rawValue
         
         return request
     }
