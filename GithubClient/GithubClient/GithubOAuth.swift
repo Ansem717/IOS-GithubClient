@@ -65,13 +65,17 @@ class GithubOAuth {
                             }
                         })
                     }
-                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                        completion(success: true)
-                    })
-                } catch _ { completion(success: false) }
-            } else { completion(success: false) }
-            }.resume()
+                    self.mainQCallback(completion: completion)
+                } catch _ { self.mainQCallback(false, completion: completion) }
+            } else { self.mainQCallback(false, completion: completion) }
+        }.resume()
     }
+    
+    func mainQCallback(success: Bool = true, completion: GithubOAuthCompletion)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: success) }
+    }
+    
     
     func accessToken() throws -> String {
         var accessToken: String?
