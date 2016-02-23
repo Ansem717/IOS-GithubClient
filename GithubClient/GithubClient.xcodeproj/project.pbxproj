@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E961DAC31C7B705D007B3288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAC21C7B705D007B3288 /* AppDelegate.swift */; };
-		E961DAC51C7B705D007B3288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAC41C7B705D007B3288 /* ViewController.swift */; };
+		E961DAC51C7B705D007B3288 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAC41C7B705D007B3288 /* OAuthViewController.swift */; };
 		E961DAC81C7B705D007B3288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E961DAC61C7B705D007B3288 /* Main.storyboard */; };
 		E961DACB1C7B705D007B3288 /* GithubClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E961DAC91C7B705D007B3288 /* GithubClient.xcdatamodeld */; };
 		E961DACD1C7B705D007B3288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E961DACC1C7B705D007B3288 /* Assets.xcassets */; };
 		E961DAD01C7B705D007B3288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E961DACE1C7B705D007B3288 /* LaunchScreen.storyboard */; };
 		E961DADB1C7B705D007B3288 /* GithubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DADA1C7B705D007B3288 /* GithubClientTests.swift */; };
 		E961DAE91C7B823C007B3288 /* GithubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAE81C7B823C007B3288 /* GithubOAuth.swift */; };
+		E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB41E1C7CC21E005CDA9F /* Identity.swift */; };
+		E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */; };
+		E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */; };
+		E9EBB4271C7CC743005CDA9F /* setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4261C7CC743005CDA9F /* setup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +34,7 @@
 /* Begin PBXFileReference section */
 		E961DABF1C7B705D007B3288 /* GithubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E961DAC21C7B705D007B3288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E961DAC41C7B705D007B3288 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E961DAC41C7B705D007B3288 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		E961DAC71C7B705D007B3288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E961DACA1C7B705D007B3288 /* GithubClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GithubClient.xcdatamodel; sourceTree = "<group>"; };
 		E961DACC1C7B705D007B3288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +44,10 @@
 		E961DADA1C7B705D007B3288 /* GithubClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientTests.swift; sourceTree = "<group>"; };
 		E961DADC1C7B705D007B3288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E961DAE81C7B823C007B3288 /* GithubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubOAuth.swift; sourceTree = "<group>"; };
+		E9EBB41E1C7CC21E005CDA9F /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
+		E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E9EBB4261C7CC743005CDA9F /* setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 		E961DAC11C7B705D007B3288 /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				E9EBB4211C7CC22E005CDA9F /* Protocols */,
 				E961DAE51C7B7239007B3288 /* Global */,
 				E961DAEA1C7B8242007B3288 /* API */,
 				E961DAE61C7B7243007B3288 /* Controller */,
@@ -111,7 +120,8 @@
 		E961DAE61C7B7243007B3288 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E961DAC41C7B705D007B3288 /* ViewController.swift */,
+				E961DAC41C7B705D007B3288 /* OAuthViewController.swift */,
+				E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -120,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				E961DAC61C7B705D007B3288 /* Main.storyboard */,
+				E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */,
 				E961DACC1C7B705D007B3288 /* Assets.xcassets */,
 				E961DACE1C7B705D007B3288 /* LaunchScreen.storyboard */,
 			);
@@ -132,6 +143,15 @@
 				E961DAE81C7B823C007B3288 /* GithubOAuth.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		E9EBB4211C7CC22E005CDA9F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E9EBB41E1C7CC21E005CDA9F /* Identity.swift */,
+				E9EBB4261C7CC743005CDA9F /* setup.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,9 +256,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E961DAE91C7B823C007B3288 /* GithubOAuth.swift in Sources */,
-				E961DAC51C7B705D007B3288 /* ViewController.swift in Sources */,
+				E961DAC51C7B705D007B3288 /* OAuthViewController.swift in Sources */,
+				E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */,
 				E961DACB1C7B705D007B3288 /* GithubClient.xcdatamodeld in Sources */,
+				E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */,
 				E961DAC31C7B705D007B3288 /* AppDelegate.swift in Sources */,
+				E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */,
+				E9EBB4271C7CC743005CDA9F /* setup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

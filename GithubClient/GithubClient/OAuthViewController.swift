@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OAuthViewController: UIViewController, Identity {
+    
+    class func id() -> String {
+        return String(OAuthViewController)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,16 +21,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     @IBAction func authorizeButton(sender: UIButton) {
         GithubOAuth.shared.OAuthRequestWithScope("email,user,repo")
     }
 
-    @IBAction func printTokenButton(sender: UIButton) {
-        do {
-            let token = try GithubOAuth.shared.accessToken()
-            print(token)
-        } catch _ {}
-    }
 }
 
