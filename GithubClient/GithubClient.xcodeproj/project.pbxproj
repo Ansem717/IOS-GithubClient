@@ -25,6 +25,9 @@
 		E9EBB4301C7CD8E1005CDA9F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB42F1C7CD8E1005CDA9F /* API.swift */; };
 		E9EBB4321C7CDC6C005CDA9F /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4311C7CDC6C005CDA9F /* Repositories.swift */; };
 		E9EBB4351C7CDCD5005CDA9F /* ModelAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4341C7CDCD5005CDA9F /* ModelAdditions.swift */; };
+		E9EBB4391C7CED10005CDA9F /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4381C7CED10005CDA9F /* Owner.swift */; };
+		E9EBB43B1C7D05A3005CDA9F /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB43A1C7D05A3005CDA9F /* CurrentUser.swift */; };
+		E9EBB43D1C7D070A005CDA9F /* GETCurrentUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB43C1C7D070A005CDA9F /* GETCurrentUserRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		E9EBB42F1C7CD8E1005CDA9F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E9EBB4311C7CDC6C005CDA9F /* Repositories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		E9EBB4341C7CDCD5005CDA9F /* ModelAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelAdditions.swift; sourceTree = "<group>"; };
+		E9EBB4381C7CED10005CDA9F /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		E9EBB43A1C7D05A3005CDA9F /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		E9EBB43C1C7D070A005CDA9F /* GETCurrentUserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GETCurrentUserRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,7 @@
 				E9EBB42F1C7CD8E1005CDA9F /* API.swift */,
 				E9EBB4281C7CD280005CDA9F /* APIRequest.swift */,
 				E9EBB42B1C7CD4BC005CDA9F /* GETRepoRequest.swift */,
+				E9EBB43C1C7D070A005CDA9F /* GETCurrentUserRequest.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -175,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				E9EBB4311C7CDC6C005CDA9F /* Repositories.swift */,
+				E9EBB4381C7CED10005CDA9F /* Owner.swift */,
+				E9EBB43A1C7D05A3005CDA9F /* CurrentUser.swift */,
 				E9EBB4341C7CDCD5005CDA9F /* ModelAdditions.swift */,
 			);
 			name = Model;
@@ -285,15 +294,18 @@
 				E961DAC51C7B705D007B3288 /* OAuthViewController.swift in Sources */,
 				E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */,
 				E961DACB1C7B705D007B3288 /* GithubClient.xcdatamodeld in Sources */,
+				E9EBB4391C7CED10005CDA9F /* Owner.swift in Sources */,
 				E9EBB42C1C7CD4BC005CDA9F /* GETRepoRequest.swift in Sources */,
 				E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */,
 				E961DAC31C7B705D007B3288 /* AppDelegate.swift in Sources */,
 				E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */,
 				E9EBB42E1C7CD5FA005CDA9F /* Additions.swift in Sources */,
 				E9EBB4321C7CDC6C005CDA9F /* Repositories.swift in Sources */,
+				E9EBB43D1C7D070A005CDA9F /* GETCurrentUserRequest.swift in Sources */,
 				E9EBB4291C7CD280005CDA9F /* APIRequest.swift in Sources */,
 				E9EBB4301C7CD8E1005CDA9F /* API.swift in Sources */,
 				E9EBB4271C7CC743005CDA9F /* setup.swift in Sources */,
+				E9EBB43B1C7D05A3005CDA9F /* CurrentUser.swift in Sources */,
 				E9EBB4351C7CDCD5005CDA9F /* ModelAdditions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

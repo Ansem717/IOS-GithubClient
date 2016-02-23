@@ -25,11 +25,27 @@ class HomeViewController: UIViewController, Identity {
     @IBAction func printReposButton(sender: UIButton) {
         Repositories.update { (success, repos) -> () in
             if success {
-//                print("============================================================================================================")
                 for repo in repos {
-//                    print(repo.name)
+                    let descript = repo.desc == kEmptyString ? "No description provided" : repo.desc
+                    print("\(repo.name) by \(repo.owner.name) -> View profile at \(repo.owner.profileLink) \n DESCRIPTION: \(descript) \n \n ")
                 }
             }
         }
     }
+    
+    @IBAction func printCurrentUser(sender: UIButton) {
+        CurrentUser.update { (success, user) -> () in
+            if success {
+                for user in user {
+                    print("");print("");
+                    print(user.avatarURL)
+                    print(user.email)
+                    print(user.linkToRepos)
+                    print(user.name)
+                    print(user.profileLink)
+                    print("");print("");
+                }
+            }
+        }
+    } 
 }

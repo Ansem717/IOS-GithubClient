@@ -1,5 +1,5 @@
 //
-//  GETRepoRequest.swift
+//  GETCurrentUserRequest.swift
 //  GithubClient
 //
 //  Created by Andy Malik on 2/23/16.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-class GETRepoRequest: APIRequest {
+class GETCurrentUserRequest: APIRequest {
     var httpMethod = HTTPMethod.GET
     var headerContentType = MIMEType.ApplicationJSON
     
     func url() -> String {
-        return "https://api.github.com/user/repos"
+        return "https://api.github.com/user"
     }
     
     func queryStringParam() -> [String : String]? {

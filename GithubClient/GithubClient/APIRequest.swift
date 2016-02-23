@@ -25,6 +25,7 @@ protocol APIRequest {
     var headerContentType: MIMEType { set get }
     
     func url() -> String
+    
     func httpHeaders() -> [String : String]?
     func httpBody() -> NSData?
     func queryStringParam() -> [String : String]?
