@@ -63,9 +63,11 @@ class GithubOAuth {
                             case .Keychain: self.saveAccessTokenToKeychain(token)
                             case .UserDefaults: self.saveAccessTokenToUserDefault(token)
                             }
-                            completion(success: true)
                         })
                     }
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        completion(success: true)
+                    })
                 } catch _ { completion(success: false) }
             } else { completion(success: false) }
             }.resume()
