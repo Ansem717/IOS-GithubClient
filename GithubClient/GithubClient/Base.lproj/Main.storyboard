@@ -16,7 +16,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ufu-6j-aPN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZW-d9-Fjo">
+                                <rect key="frame" x="260.5" y="285" width="79" height="30"/>
+                                <state key="normal" title="Print Repos"/>
+                                <connections>
+                                    <action selector="printReposButton:" destination="XC2-eI-X6q" eventType="touchUpInside" id="TZN-IH-boh"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LZW-d9-Fjo" firstAttribute="centerX" secondItem="Ufu-6j-aPN" secondAttribute="centerX" id="KR5-kW-Kn4"/>
+                            <constraint firstItem="LZW-d9-Fjo" firstAttribute="centerY" secondItem="Ufu-6j-aPN" secondAttribute="centerY" id="Rif-Vk-KNT"/>
+                            <constraint firstItem="LZW-d9-Fjo" firstAttribute="centerY" secondItem="Ufu-6j-aPN" secondAttribute="centerY" id="oXI-wO-4ui"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrK-AM-mG5" userLabel="First Responder" sceneMemberID="firstResponder"/>

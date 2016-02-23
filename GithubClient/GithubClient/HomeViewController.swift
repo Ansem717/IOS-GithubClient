@@ -21,4 +21,10 @@ class HomeViewController: UIViewController, Identity {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func printReposButton(sender: UIButton) {
+        API.shared.enqueue(GETRepoRequest()) { (success, json) -> () in
+            //
+        }
+    }
 }
