@@ -21,6 +21,7 @@ extension Repositories {
                 let ownerProfileLink = eachRepo["owner"]?["html_url"] as? String ?? kEmptyString
                 let ownerRepoLink = eachRepo["owner"]?["repos_url"] as? String ?? kEmptyString
                 let owner = Owner(name: ownerName, linkToRepos: ownerRepoLink, profileLink: ownerProfileLink)
+                
                 repos.append(Repositories(name: name, owner: owner, desc: desc))
             }
             

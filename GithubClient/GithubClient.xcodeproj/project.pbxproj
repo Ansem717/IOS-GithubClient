@@ -15,6 +15,7 @@
 		E961DAD01C7B705D007B3288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E961DACE1C7B705D007B3288 /* LaunchScreen.storyboard */; };
 		E961DADB1C7B705D007B3288 /* GithubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DADA1C7B705D007B3288 /* GithubClientTests.swift */; };
 		E961DAE91C7B823C007B3288 /* GithubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAE81C7B823C007B3288 /* GithubOAuth.swift */; };
+		E9EA80ED1C7E44D2006D1F5A /* ReposTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */; };
 		E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB41E1C7CC21E005CDA9F /* Identity.swift */; };
 		E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */; };
 		E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */; };
@@ -53,6 +54,7 @@
 		E961DADA1C7B705D007B3288 /* GithubClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientTests.swift; sourceTree = "<group>"; };
 		E961DADC1C7B705D007B3288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E961DAE81C7B823C007B3288 /* GithubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubOAuth.swift; sourceTree = "<group>"; };
+		E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposTableViewCell.swift; sourceTree = "<group>"; };
 		E9EBB41E1C7CC21E005CDA9F /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				E961DAC41C7B705D007B3288 /* OAuthViewController.swift */,
 				E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */,
+				E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				E9EBB4271C7CC743005CDA9F /* setup.swift in Sources */,
 				E9EBB43B1C7D05A3005CDA9F /* CurrentUser.swift in Sources */,
 				E9EBB4351C7CDCD5005CDA9F /* ModelAdditions.swift in Sources */,
+				E9EA80ED1C7E44D2006D1F5A /* ReposTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
