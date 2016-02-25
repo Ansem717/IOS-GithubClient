@@ -34,34 +34,48 @@ class GithubOAuth {
     private init() {}
     
     func OAuthRequestWithScope(scope: String) {
-        guard let requestURL = NSURL(string: "\(kOAuthBaseURLString)/authorize?client_id=\(self.githubClientID)&scope=\(scope)") else {
-            fatalError("Line 38 - GithubOAuth.swift - Error creatuing URL within \(__FUNCTION__)")
+        do {
+            let token = try GithubOAuth.shared.accessToken()
+            print("You are already logged into GitHub! Your token is \(token)")
+        } catch _ {
+            guard let requestURL = NSURL(string: "\(kOAuthBaseURLString)/authorize?client_id=\(self.githubClientID)&scope=\(scope)") else {
+                fatalError("Line 38 - GithubOAuth.swift - Error creatuing URL within \(__FUNCTION__)")
+            }
+            UIApplication.sharedApplication().openURL(requestURL)
         }
-        UIApplication.sharedApplication().openURL(requestURL)
     }
     
     func tokenRequestWithCallback(url: NSURL, options: SaveOption, completion: GithubOAuthCompletion) {
         guard let codeString = url.query else { return }
         guard let requestURL = NSURL(string: "\(kOAuthBaseURLString)/access_token?client_id=\(self.githubClientID)&client_secret=\(self.githubClientSecret)&\(codeString)") else { return }
+        
         let request = self.requestWith(requestURL, method: "POST")
         
         NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+            
             if let error = error { print("ERROR - GithubOAuth.swift [line:50] - \(error)"); return }
+            
             if let data = data {
                 do {
                     if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String : AnyObject], token = self.accessTokenFrom(json) {
                         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                             switch options {
-                                case .Keychain: self.saveAccessTokenToKeychain(token)
-                                case .UserDefaults: self.saveAccessTokenToUserDefault(token)
+                            case .Keychain: self.saveAccessTokenToKeychain(token)
+                            case .UserDefaults: self.saveAccessTokenToUserDefault(token)
                             }
-                            completion(success: true) 
                         })
                     }
-                } catch _ { completion(success: false) }
-            } else { completion(success: false) }
+                    self.mainQCallback(completion: completion)
+                } catch _ { self.mainQCallback(false, completion: completion) }
+            } else { self.mainQCallback(false, completion: completion) }
         }.resume()
     }
+    
+    func mainQCallback(success: Bool = true, completion: GithubOAuthCompletion)
+    {
+        NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: success) }
+    }
+    
     
     func accessToken() throws -> String {
         var accessToken: String?

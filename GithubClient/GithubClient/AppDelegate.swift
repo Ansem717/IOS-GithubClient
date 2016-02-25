@@ -13,19 +13,47 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var oavc: OAuthViewController? //This is my normal naming convention. Abbriviations are much easier for me to handle. Swift is the first time I've seen unecessarily long variable names. Is it ok if I stick with my style?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        checkOAuthStatus()
         return true
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.UserDefaults) { (success) -> () in
+        GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.Keychain) { (success) -> () in
             if success {
-                print("We have a token!")
+                
+                guard let oauthVC = self.oavc else { return }
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+
+                    oauthVC.view.alpha = 0.0
+                    
+                    }, completion: { (finished) -> Void in
+                        
+                        oauthVC.view.removeFromSuperview()
+                        oauthVC.removeFromParentViewController()
+                })
             }
         }
         return true
+    }
+    
+    func checkOAuthStatus() {
+        do {
+            try GithubOAuth.shared.accessToken()
+        } catch _ { self.presentOAuthViewController() }
+    }
+    
+    func presentOAuthViewController() {
+        guard let hvc = self.window?.rootViewController as? HomeViewController else { fatalError("Root View Controller should be HomeViewController.") }
+        guard let storyboard = hvc.storyboard else { fatalError("No storyboard? You fucked up.") }
+        guard let oauthVC = storyboard.instantiateViewControllerWithIdentifier(OAuthViewController.id()) as? OAuthViewController else { fatalError() }
+        
+        hvc.addChildViewController(oauthVC)
+        hvc.view.addSubview(oauthVC.view)
+        oauthVC.didMoveToParentViewController(hvc)
     }
     
     
