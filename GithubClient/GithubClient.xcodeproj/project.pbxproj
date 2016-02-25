@@ -18,6 +18,9 @@
 		E9EA80ED1C7E44D2006D1F5A /* ReposTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */; };
 		E9EA80EF1C7E510E006D1F5A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */; };
 		E9EA80F11C7E6252006D1F5A /* GETSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */; };
+		E9EA80F31C7E9491006D1F5A /* POSTRepoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80F21C7E9491006D1F5A /* POSTRepoRequest.swift */; };
+		E9EA80F51C7E971D006D1F5A /* AddRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80F41C7E971D006D1F5A /* AddRepoViewController.swift */; };
+		E9EA80F91C7EA2B3006D1F5A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80F81C7EA2B3006D1F5A /* ProfileViewController.swift */; };
 		E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB41E1C7CC21E005CDA9F /* Identity.swift */; };
 		E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */; };
 		E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */; };
@@ -59,6 +62,9 @@
 		E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposTableViewCell.swift; sourceTree = "<group>"; };
 		E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GETSearchRequest.swift; sourceTree = "<group>"; };
+		E9EA80F21C7E9491006D1F5A /* POSTRepoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POSTRepoRequest.swift; sourceTree = "<group>"; };
+		E9EA80F41C7E971D006D1F5A /* AddRepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRepoViewController.swift; sourceTree = "<group>"; };
+		E9EA80F81C7EA2B3006D1F5A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E9EBB41E1C7CC21E005CDA9F /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -148,8 +154,10 @@
 			children = (
 				E961DAC41C7B705D007B3288 /* OAuthViewController.swift */,
 				E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */,
+				E9EA80F41C7E971D006D1F5A /* AddRepoViewController.swift */,
 				E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */,
 				E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */,
+				E9EA80F81C7EA2B3006D1F5A /* ProfileViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 				E9EBB42F1C7CD8E1005CDA9F /* API.swift */,
 				E9EBB4281C7CD280005CDA9F /* APIRequest.swift */,
 				E9EBB42B1C7CD4BC005CDA9F /* GETRepoRequest.swift */,
+				E9EA80F21C7E9491006D1F5A /* POSTRepoRequest.swift */,
 				E9EBB43C1C7D070A005CDA9F /* GETCurrentUserRequest.swift */,
 				E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */,
 			);
@@ -300,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E961DAE91C7B823C007B3288 /* GithubOAuth.swift in Sources */,
+				E9EA80F31C7E9491006D1F5A /* POSTRepoRequest.swift in Sources */,
 				E961DAC51C7B705D007B3288 /* OAuthViewController.swift in Sources */,
 				E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */,
 				E961DACB1C7B705D007B3288 /* GithubClient.xcdatamodeld in Sources */,
@@ -310,8 +320,10 @@
 				E961DAC31C7B705D007B3288 /* AppDelegate.swift in Sources */,
 				E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */,
 				E9EBB42E1C7CD5FA005CDA9F /* Additions.swift in Sources */,
+				E9EA80F51C7E971D006D1F5A /* AddRepoViewController.swift in Sources */,
 				E9EBB4321C7CDC6C005CDA9F /* Repositories.swift in Sources */,
 				E9EBB43D1C7D070A005CDA9F /* GETCurrentUserRequest.swift in Sources */,
+				E9EA80F91C7EA2B3006D1F5A /* ProfileViewController.swift in Sources */,
 				E9EBB4291C7CD280005CDA9F /* APIRequest.swift in Sources */,
 				E9EBB4301C7CD8E1005CDA9F /* API.swift in Sources */,
 				E9EBB4271C7CC743005CDA9F /* setup.swift in Sources */,

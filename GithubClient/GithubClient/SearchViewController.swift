@@ -8,16 +8,19 @@
 
 import UIKit
 
-//MARK: REMOVE
-//enum SCVError: ErrorType {
-//    case SearchBarFailedString
-//}
 
 class SearchViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBarOUTLET: UISearchBar!
+    @IBOutlet weak var searchTableView: UITableView!
     
     var bookmarks = [String]()
+    
+    var repodata = [Repositories]() {
+        didSet {
+            self.searchTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,23 +36,16 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchAPI() {
+        if searchBarOUTLET.text == kEmptyString { return }
         Repositories.searchRepo(self.searchBarOUTLET.text!) { (success, repos) -> () in
             if success {
-                for repo in repos {
-                    print("");print("");
-                    print(repo.name)
-                    print(repo.desc)
-                    print(repo.owner.name)
-                    print(repo.owner.linkToRepos)
-                    print(repo.owner.profileLink)
-                    print("");print("");
-                }
+                self.repodata = repos
             }
         }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        print(searchText) //I didn't end up doing anything here as I feared the constant searching to the API wouldn't be optimal for user experience. Instead of improving this project in my free time, I decided to work on my Personal Project.
+//        searchAPI()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -67,20 +63,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         searchBarOUTLET.showsBookmarkButton = true
         searchBarOUTLET.showsCancelButton = true
     }
-    
-
-    
-    //MARK: REMOVE
-//    class func userSearchInput() throws -> String {
-//        var userSearchInput: String?
-//        if let returnText = SearchViewController().searchBarOUTLET.text { userSearchInput = returnText }
-//        
-//        guard let returnText = userSearchInput else {
-//            throw SCVError.SearchBarFailedString
-//        }
-//        
-//        return returnText
-//    }
     
     
     //MARK: MasterBookmarkingFunction
@@ -131,7 +113,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             for bookmark in bookmarks {
                 bookmarkAS.addAction(UIAlertAction(title: bookmark, style: .Default, handler: { (action) -> Void in
                     self.searchBarOUTLET.text = bookmark
-                    //API Search with that bookmark.
+                    self.searchAPI()
                 }))
             }
             bookmarkAS.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
@@ -173,11 +155,21 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
 }
 
-
-
-
-
-
+extension SearchViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.repodata.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let reuseRepoCell = self.searchTableView.dequeueReusableCellWithIdentifier("searchTableViewCell", forIndexPath: indexPath)
+        reuseRepoCell.textLabel?.text = self.repodata[indexPath.row].name
+        reuseRepoCell.detailTextLabel?.text = self.repodata[indexPath.row].desc
+        
+        return reuseRepoCell
+    }
+    
+}
 
 
 

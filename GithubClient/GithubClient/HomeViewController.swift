@@ -42,22 +42,6 @@ class HomeViewController: UIViewController, Identity {
             }
         }
     }
-    
-    @IBAction func printCurrentUser(sender: UIButton) {
-        CurrentUser.update { (success, user) -> () in
-            if success {
-                for user in user {
-                    print("");print("");
-                    print(user.avatarURL)
-                    print(user.email)
-                    print(user.linkToRepos)
-                    print(user.name)
-                    print(user.profileLink)
-                    print("");print("");
-                }
-            }
-        }
-    } 
 }
 
 extension HomeViewController: UITableViewDataSource {

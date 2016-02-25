@@ -33,7 +33,7 @@ extension Repositories {
         API.shared.enqueue(GETSearchRequest(searchResult: searchResult)) { (success, json) -> () in
             var repos = [Repositories]()
             
-//            print(json)
+            //            print(json)
             
             for eachRepo in json {
                 for var i = 0; i < eachRepo["items"]?.count; i++ {
@@ -56,7 +56,7 @@ extension Repositories {
                     repos.append(Repositories(name: name, owner: owner, desc: desc))
                 }
                 
-
+                
             }
             
             NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: true, repos: repos) }
@@ -65,7 +65,7 @@ extension Repositories {
 }
 
 extension CurrentUser {
-    class func update(completion: (success: Bool, user: [CurrentUser]) -> ()) {
+    class func update(completion: (success: Bool, user: CurrentUser?) -> ()) {
         API.shared.enqueue(GETCurrentUserRequest()) { (success, json) -> () in
             var currUser = [CurrentUser]()
             
@@ -77,9 +77,13 @@ extension CurrentUser {
                 let email = user["email"] as? String ?? kEmptyString
                 currUser.append(CurrentUser(name: realName!, linkToRepos: linkToRepos, profileLink: userProfileLink, avatarURL: avatarURL, email: email))
             }
-            
-            NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: true, user: currUser) }
-            
+            if let user = currUser.first {
+                NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: true, user: user) }
+            } else {
+                NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: false, user: nil)
+                }
+                
+            }
         }
     }
 }
