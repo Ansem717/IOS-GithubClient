@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E945B3591C7F9A6C001C872A /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E945B3581C7F9A6C001C872A /* SearchUserViewController.swift */; };
+		E945B35E1C7F9E89001C872A /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E945B35D1C7F9E89001C872A /* UserSearchCollectionViewCell.swift */; };
+		E945B3601C7FA6DD001C872A /* GETSearchRequestUSER.swift in Sources */ = {isa = PBXBuildFile; fileRef = E945B35F1C7FA6DD001C872A /* GETSearchRequestUSER.swift */; };
 		E961DAC31C7B705D007B3288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAC21C7B705D007B3288 /* AppDelegate.swift */; };
 		E961DAC51C7B705D007B3288 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAC41C7B705D007B3288 /* OAuthViewController.swift */; };
 		E961DAC81C7B705D007B3288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E961DAC61C7B705D007B3288 /* Main.storyboard */; };
@@ -47,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E945B3581C7F9A6C001C872A /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		E945B35D1C7F9E89001C872A /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		E945B35F1C7FA6DD001C872A /* GETSearchRequestUSER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GETSearchRequestUSER.swift; sourceTree = "<group>"; };
 		E961DABF1C7B705D007B3288 /* GithubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E961DAC21C7B705D007B3288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E961DAC41C7B705D007B3288 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E945B35A1C7F9CB3001C872A /* Table & Collection Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */,
+				E945B35D1C7F9E89001C872A /* UserSearchCollectionViewCell.swift */,
+			);
+			name = "Table & Collection Cells";
+			sourceTree = "<group>";
+		};
 		E961DAB61C7B705D007B3288 = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +171,8 @@
 				E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */,
 				E9EA80F41C7E971D006D1F5A /* AddRepoViewController.swift */,
 				E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */,
-				E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */,
+				E945B3581C7F9A6C001C872A /* SearchUserViewController.swift */,
+				E945B35A1C7F9CB3001C872A /* Table & Collection Cells */,
 				E9EA80F81C7EA2B3006D1F5A /* ProfileViewController.swift */,
 			);
 			name = Controller;
@@ -183,6 +199,7 @@
 				E9EA80F21C7E9491006D1F5A /* POSTRepoRequest.swift */,
 				E9EBB43C1C7D070A005CDA9F /* GETCurrentUserRequest.swift */,
 				E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */,
+				E945B35F1C7FA6DD001C872A /* GETSearchRequestUSER.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -319,8 +336,11 @@
 				E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */,
 				E961DAC31C7B705D007B3288 /* AppDelegate.swift in Sources */,
 				E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */,
+				E945B3601C7FA6DD001C872A /* GETSearchRequestUSER.swift in Sources */,
 				E9EBB42E1C7CD5FA005CDA9F /* Additions.swift in Sources */,
+				E945B35E1C7F9E89001C872A /* UserSearchCollectionViewCell.swift in Sources */,
 				E9EA80F51C7E971D006D1F5A /* AddRepoViewController.swift in Sources */,
+				E945B3591C7F9A6C001C872A /* SearchUserViewController.swift in Sources */,
 				E9EBB4321C7CDC6C005CDA9F /* Repositories.swift in Sources */,
 				E9EBB43D1C7D070A005CDA9F /* GETCurrentUserRequest.swift in Sources */,
 				E9EA80F91C7EA2B3006D1F5A /* ProfileViewController.swift in Sources */,

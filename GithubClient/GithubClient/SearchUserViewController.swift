@@ -1,39 +1,39 @@
 //
-//  SearchViewController.swift
+//  SearchUserViewController.swift
 //  GithubClient
 //
-//  Created by Andy Malik on 2/24/16.
+//  Created by Andy Malik on 2/25/16.
 //  Copyright © 2016 AndyMalik. All rights reserved.
 //
 
 import UIKit
 
+let kReuseID = "UserReuseCell"
 
-class SearchViewController: UIViewController, UISearchBarDelegate {
+class SearchUserViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBarOUTLET: UISearchBar!
-    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var userCollectionView: UICollectionView!
     
-    
-    var repodata = [Repositories]() {
-        didSet {
-            self.searchTableView.reloadData()
+    var userData = [Owner]() {
+        didSet{
+            self.userCollectionView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupSearchBar()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func setupSearchBar() {
         searchBarOUTLET.placeholder = "Search"
         searchBarOUTLET.showsBookmarkButton = true
@@ -42,9 +42,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchAPI() {
         if searchBarOUTLET.text == kEmptyString { return }
-        Repositories.searchRepo(self.searchBarOUTLET.text!) { (success, repos) -> () in
+        Owner.searchOwners(self.searchBarOUTLET.text!) { (success, users) -> () in
             if success {
-                self.repodata = repos
+                self.userData = users
             }
         }
     }
@@ -62,6 +62,9 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         self.view.endEditing(true)
         searchBarOUTLET.text = kEmptyString
     }
+    
+    
+    
     
     var bookmarks = [String]()
     
@@ -86,7 +89,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         self.presentViewController(questionAction, animated: true, completion: nil)
         
     }
-
+    
     
     //MARK: Bookmarking Functions
     func saveBookmark() {
@@ -149,30 +152,23 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             }
             deleteAS.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
         }
-        
         self.presentViewController(deleteAS, animated: true, completion: nil)
     }
     
 }
 
-extension SearchViewController: UITableViewDataSource {
+extension SearchUserViewController: UICollectionViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.repodata.count
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.userData.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseRepoCell = self.searchTableView.dequeueReusableCellWithIdentifier("searchTableViewCell", forIndexPath: indexPath)
-        reuseRepoCell.textLabel?.text = self.repodata[indexPath.row].name
-        reuseRepoCell.detailTextLabel?.text = self.repodata[indexPath.row].desc
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        guard let reuseUserSearchCell = self.userCollectionView.dequeueReusableCellWithReuseIdentifier(kReuseID, forIndexPath: indexPath) as? UserSearchCollectionViewCell else { fatalError() }
+        reuseUserSearchCell.owner = userData[indexPath.row]
         
-        return reuseRepoCell
+        return reuseUserSearchCell
     }
+    
     
 }
-
-
-
-
-
-
