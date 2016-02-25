@@ -86,7 +86,6 @@ class GithubOAuth {
             throw GithubOauthError.MissingAccessToken("You don't have an access token saved")
         }
         
-        
         return token
     }
     
