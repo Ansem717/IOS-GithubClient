@@ -16,6 +16,8 @@
 		E961DADB1C7B705D007B3288 /* GithubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DADA1C7B705D007B3288 /* GithubClientTests.swift */; };
 		E961DAE91C7B823C007B3288 /* GithubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E961DAE81C7B823C007B3288 /* GithubOAuth.swift */; };
 		E9EA80ED1C7E44D2006D1F5A /* ReposTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */; };
+		E9EA80EF1C7E510E006D1F5A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */; };
+		E9EA80F11C7E6252006D1F5A /* GETSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */; };
 		E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB41E1C7CC21E005CDA9F /* Identity.swift */; };
 		E9EBB4231C7CC2AF005CDA9F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */; };
 		E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */; };
@@ -55,6 +57,8 @@
 		E961DADC1C7B705D007B3288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E961DAE81C7B823C007B3288 /* GithubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubOAuth.swift; sourceTree = "<group>"; };
 		E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposTableViewCell.swift; sourceTree = "<group>"; };
+		E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GETSearchRequest.swift; sourceTree = "<group>"; };
 		E9EBB41E1C7CC21E005CDA9F /* Identity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identity.swift; sourceTree = "<group>"; };
 		E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E9EBB4241C7CC6A8005CDA9F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			children = (
 				E961DAC41C7B705D007B3288 /* OAuthViewController.swift */,
 				E9EBB4221C7CC2AF005CDA9F /* HomeViewController.swift */,
+				E9EA80EE1C7E510E006D1F5A /* SearchViewController.swift */,
 				E9EA80EC1C7E44D2006D1F5A /* ReposTableViewCell.swift */,
 			);
 			name = Controller;
@@ -168,6 +173,7 @@
 				E9EBB4281C7CD280005CDA9F /* APIRequest.swift */,
 				E9EBB42B1C7CD4BC005CDA9F /* GETRepoRequest.swift */,
 				E9EBB43C1C7D070A005CDA9F /* GETCurrentUserRequest.swift */,
+				E9EA80F01C7E6252006D1F5A /* GETSearchRequest.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				E961DAC51C7B705D007B3288 /* OAuthViewController.swift in Sources */,
 				E9EBB41F1C7CC21E005CDA9F /* Identity.swift in Sources */,
 				E961DACB1C7B705D007B3288 /* GithubClient.xcdatamodeld in Sources */,
+				E9EA80EF1C7E510E006D1F5A /* SearchViewController.swift in Sources */,
 				E9EBB4391C7CED10005CDA9F /* Owner.swift in Sources */,
 				E9EBB42C1C7CD4BC005CDA9F /* GETRepoRequest.swift in Sources */,
 				E9EBB4251C7CC6A8005CDA9F /* CustomButton.swift in Sources */,
@@ -308,6 +315,7 @@
 				E9EBB4291C7CD280005CDA9F /* APIRequest.swift in Sources */,
 				E9EBB4301C7CD8E1005CDA9F /* API.swift in Sources */,
 				E9EBB4271C7CC743005CDA9F /* setup.swift in Sources */,
+				E9EA80F11C7E6252006D1F5A /* GETSearchRequest.swift in Sources */,
 				E9EBB43B1C7D05A3005CDA9F /* CurrentUser.swift in Sources */,
 				E9EBB4351C7CDCD5005CDA9F /* ModelAdditions.swift in Sources */,
 				E9EA80ED1C7E44D2006D1F5A /* ReposTableViewCell.swift in Sources */,

@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="343" y="-411"/>
         </scene>
-        <!--Item-->
+        <!--Search Github-->
         <scene sceneID="1F0-Q2-CZk">
             <objects>
-                <viewController id="PLF-F5-yLV" sceneMemberID="viewController">
+                <viewController id="PLF-F5-yLV" customClass="SearchViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rLe-xQ-whN"/>
                         <viewControllerLayoutGuide type="bottom" id="znN-T9-TfS"/>
@@ -87,20 +87,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ITEM TWO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-Wv-H7Z">
-                                <rect key="frame" x="259" y="289.5" width="82" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zDR-yi-SeE">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="PLF-F5-yLV" id="DxD-4J-NZz"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DFz-Wv-H7Z" firstAttribute="centerX" secondItem="ESN-2h-z6A" secondAttribute="centerX" id="qba-wY-cSN"/>
-                            <constraint firstItem="DFz-Wv-H7Z" firstAttribute="centerY" secondItem="ESN-2h-z6A" secondAttribute="centerY" id="uDo-Kt-e85"/>
+                            <constraint firstItem="zDR-yi-SeE" firstAttribute="leading" secondItem="ESN-2h-z6A" secondAttribute="leading" id="Q07-Cn-B3f"/>
+                            <constraint firstAttribute="trailing" secondItem="zDR-yi-SeE" secondAttribute="trailing" id="fP0-Uz-jE8"/>
+                            <constraint firstItem="zDR-yi-SeE" firstAttribute="top" secondItem="rLe-xQ-whN" secondAttribute="bottom" id="gUH-mv-ust"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="a1E-uO-Eiv"/>
+                    <tabBarItem key="tabBarItem" title="Search Github" id="a1E-uO-Eiv">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-17"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="searchBarOUTLET" destination="zDR-yi-SeE" id="J47-FN-64R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJY-VC-v7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

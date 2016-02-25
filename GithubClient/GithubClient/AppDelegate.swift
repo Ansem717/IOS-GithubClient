@@ -21,8 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.Keychain) { (success) -> () in
+        GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.UserDefaults) { (success) -> () in
             if success {
+                
+                guard let rvc = self.window?.rootViewController as? UITabBarController else { fatalError("Root View Controller should be HomeViewController.") }
+                guard let hvc = rvc.viewControllers?.first as? HomeViewController else { fatalError() }
+                
+                hvc.setupRepos()
                 
                 guard let oauthVC = self.oavc else { return }
                 
@@ -54,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rvc.addChildViewController(oauthVC)
         rvc.view.addSubview(oauthVC.view)
         oauthVC.didMoveToParentViewController(rvc)
+        
+        self.oavc = oauthVC
     }
     
     

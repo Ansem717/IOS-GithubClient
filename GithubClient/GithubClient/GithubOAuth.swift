@@ -79,7 +79,7 @@ class GithubOAuth {
     
     func accessToken() throws -> String {
         var accessToken: String?
-        if let token = self.accessTokenFromKeychain() { accessToken = token }
+//        if let token = self.accessTokenFromKeychain() { accessToken = token }
         if let token = self.accessTokenFromUserDefaults() { accessToken = token }
         
         guard let token = accessToken else {
