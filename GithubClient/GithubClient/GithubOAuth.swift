@@ -35,8 +35,8 @@ class GithubOAuth {
     
     func OAuthRequestWithScope(scope: String) {
         do {
-            let token = try GithubOAuth.shared.accessToken()
-            print("You are already logged into GitHub! Your token is \(token)")
+            try GithubOAuth.shared.accessToken()
+            print("You are already logged into GitHub!")
         } catch _ {
             guard let requestURL = NSURL(string: "\(kOAuthBaseURLString)/authorize?client_id=\(self.githubClientID)&scope=\(scope)") else {
                 fatalError("Line 38 - GithubOAuth.swift - Error creatuing URL within \(__FUNCTION__)")
@@ -79,7 +79,7 @@ class GithubOAuth {
     
     func accessToken() throws -> String {
         var accessToken: String?
-        if let token = self.accessTokenFromKeychain() { accessToken = token }
+//        if let token = self.accessTokenFromKeychain() { accessToken = token }
         if let token = self.accessTokenFromUserDefaults() { accessToken = token }
         
         guard let token = accessToken else {

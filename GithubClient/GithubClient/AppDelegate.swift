@@ -21,8 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.Keychain) { (success) -> () in
+        GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.UserDefaults) { (success) -> () in
             if success {
+                
+                guard let rvc = self.window?.rootViewController as? UITabBarController else { fatalError("Root View Controller should be HomeViewController.") }
+                guard let hvc = rvc.viewControllers?.first as? HomeViewController else { fatalError() }
+                
+                hvc.setupRepos()
                 
                 guard let oauthVC = self.oavc else { return }
                 
@@ -47,13 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func presentOAuthViewController() {
-        guard let hvc = self.window?.rootViewController as? HomeViewController else { fatalError("Root View Controller should be HomeViewController.") }
-        guard let storyboard = hvc.storyboard else { fatalError("No storyboard? You fucked up.") }
+        guard let rvc = self.window?.rootViewController as? UITabBarController else { fatalError("Root View Controller should be HomeViewController.") }
+        guard let storyboard = rvc.storyboard else { fatalError("No storyboard? You fucked up.") }
         guard let oauthVC = storyboard.instantiateViewControllerWithIdentifier(OAuthViewController.id()) as? OAuthViewController else { fatalError() }
         
-        hvc.addChildViewController(oauthVC)
-        hvc.view.addSubview(oauthVC.view)
-        oauthVC.didMoveToParentViewController(hvc)
+        rvc.addChildViewController(oauthVC)
+        rvc.view.addSubview(oauthVC.view)
+        oauthVC.didMoveToParentViewController(rvc)
+        
+        self.oavc = oauthVC
     }
     
     

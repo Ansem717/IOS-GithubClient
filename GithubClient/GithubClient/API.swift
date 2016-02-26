@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Social
 
 typealias APICompletionHandler = (success: Bool, json: [[String : AnyObject]]) -> ()
 
@@ -24,7 +25,6 @@ class API {
                 if let data = data {
                     do {
                         if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [[String: AnyObject]] {
-//                            print(json[0])
                             completion(success: true, json: json)
                         }
                         if let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String : AnyObject] {
@@ -34,5 +34,17 @@ class API {
                 }
             }
         }.resume()
+    }
+    
+    class func getImage(urlString: String, completion: (image: UIImage) -> ()) {
+        NSOperationQueue().addOperationWithBlock { () -> Void in
+            guard let url = NSURL(string: urlString) else { return }
+            guard let data = NSData(contentsOfURL: url) else { return }
+            guard let image = UIImage(data: data) else { return }
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                completion(image: image)
+            })
+        }
     }
 }

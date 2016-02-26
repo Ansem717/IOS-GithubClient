@@ -10,6 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController, Identity {
     
+    @IBOutlet weak var repoTableview: UITableView!
+    
+    var repodata = [Repositories]() {
+        didSet {
+            self.repoTableview.reloadData()
+        }
+    }
+    
     class func id() -> String {
         return String(HomeViewController)
     }
@@ -18,34 +26,56 @@ class HomeViewController: UIViewController, Identity {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setupRepos()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func printReposButton(sender: UIButton) {
+    func setupRepos() {
         Repositories.update { (success, repos) -> () in
             if success {
-                for repo in repos {
-                    let descript = repo.desc == kEmptyString ? "No description provided" : repo.desc
-                    print("\(repo.name) by \(repo.owner.name) -> View profile at \(repo.owner.profileLink) \n DESCRIPTION: \(descript) \n \n ")
-                }
+                self.repodata = repos
             }
         }
     }
-    
-    @IBAction func printCurrentUser(sender: UIButton) {
-        CurrentUser.update { (success, user) -> () in
-            if success {
-                for user in user {
-                    print("");print("");
-                    print(user.avatarURL)
-                    print(user.email)
-                    print(user.linkToRepos)
-                    print(user.name)
-                    print(user.profileLink)
-                    print("");print("");
-                }
-            }
-        }
-    } 
 }
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.repodata.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let reuseRepoCell = self.repoTableview.dequeueReusableCellWithIdentifier("yourRepoCell", forIndexPath: indexPath) as! ReposTableViewCell
+        reuseRepoCell.repo = self.repodata[indexPath.row]
+        
+        return reuseRepoCell
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
