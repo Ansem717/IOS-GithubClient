@@ -16,13 +16,16 @@ extension Repositories {
             for eachRepo in json {
                 let name = eachRepo["name"] as? String ?? kEmptyString
                 let desc = eachRepo["description"] as? String ?? kEmptyString
+                let repourl = eachRepo["html_url"] as? String ?? kEmptyString
+                print(repourl)
                 
                 let ownerName = eachRepo["owner"]?["login"] as? String ?? kEmptyString
                 let ownerProfileLink = eachRepo["owner"]?["html_url"] as? String ?? kEmptyString
                 let ownerRepoLink = eachRepo["owner"]?["repos_url"] as? String ?? kEmptyString
+                
                 let owner = Owner(name: ownerName, linkToRepos: ownerRepoLink, profileLink: ownerProfileLink)
                 
-                repos.append(Repositories(name: name, owner: owner, desc: desc))
+                repos.append(Repositories(name: name, owner: owner, desc: desc, url: repourl))
             }
             
             NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: true, repos: repos) }
@@ -38,6 +41,8 @@ extension Repositories {
             for var i = 0; i < itemsArray.count; i++ {
                 let name = itemsArray[i]["name"] as? String ?? kEmptyString
                 let desc = itemsArray[i]["description"] as? String ?? kEmptyString
+                let repourl = itemsArray[i]["html_url"] as? String ?? kEmptyString
+                print(repourl)
                 
                 let ownerName = itemsArray[i]["owner"]??["login"] as? String ?? kEmptyString
                 let ownerProfileLink = itemsArray[i]["owner"]??["html_url"] as? String ?? kEmptyString
@@ -45,7 +50,7 @@ extension Repositories {
                 
                 let owner = Owner(name: ownerName, linkToRepos: ownerRepoLink, profileLink: ownerProfileLink)
                 
-                repos.append(Repositories(name: name, owner: owner, desc: desc))
+                repos.append(Repositories(name: name, owner: owner, desc: desc, url: repourl))
             }
             
             NSOperationQueue.mainQueue().addOperationWithBlock { completion(success: true, repos: repos) }
