@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GithubOAuth.shared.tokenRequestWithCallback(url, options: SaveOption.UserDefaults) { (success) -> () in
             if success {
                 
-                guard let rvc = self.window?.rootViewController as? UITabBarController else { fatalError("Root View Controller should be HomeViewController.") }
-                guard let hvc = rvc.viewControllers?.first as? HomeViewController else { fatalError() }
+                guard let rvc = self.window?.rootViewController as? UITabBarController else { fatalError("Root View Controller should be TabBarController.") }
+                guard let navVC = rvc.viewControllers?.first as? UINavigationController else { fatalError("TabBarController's First controller should be NavigationController") }
+                guard let hvc = navVC.viewControllers.first as? HomeViewController else { fatalError("NavigationController's First controller should be HomeViewController") }
                 
                 hvc.setupRepos()
                 

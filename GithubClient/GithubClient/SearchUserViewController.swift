@@ -1,39 +1,42 @@
 //
-//  SearchViewController.swift
+//  SearchUserViewController.swift
 //  GithubClient
 //
-//  Created by Andy Malik on 2/24/16.
+//  Created by Andy Malik on 2/25/16.
 //  Copyright © 2016 AndyMalik. All rights reserved.
 //
 
 import UIKit
 
+let kReuseID = "UserReuseCell"
+let kSearchUserToUserDetailSegueID = "FromSearchUserToUserProfile"
 
-class SearchViewController: UIViewController, UISearchBarDelegate {
+class SearchUserViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBarOUTLET: UISearchBar!
-    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var userCollectionView: UICollectionView!
     
+        let customTransition = CustomTranstiion(duration: 1.0, delay: 0.0)
     
-    var repodata = [Repositories]() {
-        didSet {
-            self.searchTableView.reloadData()
+    var userData = [Owner]() {
+        didSet{
+            self.userCollectionView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupSearchBar()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func setupSearchBar() {
         searchBarOUTLET.placeholder = "Search"
         searchBarOUTLET.showsBookmarkButton = true
@@ -42,15 +45,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     func searchAPI() {
         if searchBarOUTLET.text == kEmptyString { return }
-        Repositories.searchRepo(self.searchBarOUTLET.text!) { (success, repos) -> () in
+        Owner.searchOwners(self.searchBarOUTLET.text!) { (success, users) -> () in
             if success {
-                self.repodata = repos
+                self.userData = users
             }
         }
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        //        searchAPI()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -62,6 +61,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         self.view.endEditing(true)
         searchBarOUTLET.text = kEmptyString
     }
+    
     
     var bookmarks = [String]()
     
@@ -82,15 +82,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             self.deleteBookmark()
         }))
         questionAction.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        
         self.presentViewController(questionAction, animated: true, completion: nil)
         
     }
-
+    
     
     //MARK: Bookmarking Functions
     func saveBookmark() {
-        
         let saveAlert = UIAlertController(title: "Save", message: "Do you wish to save \(searchBarOUTLET.text!) ?", preferredStyle: .Alert)
         saveAlert.addAction(UIAlertAction(title: "Save", style: .Default, handler: { (action) -> Void in
             self.bookmarks.append(self.searchBarOUTLET.text!)
@@ -103,13 +101,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         let title = bookmarks.isEmpty ? "You have no bookmarks!" : "Bookmarks"
         let message = bookmarks.isEmpty ? "Please manually search for a field, and then add it as a bookmark" : "Here are the searches you've saved"
         let prefStyle = bookmarks.isEmpty ? UIAlertControllerStyle.Alert : UIAlertControllerStyle.ActionSheet
-        
         let bookmarkAS = UIAlertController(title: title, message: message, preferredStyle: prefStyle)
-        
         if bookmarks.isEmpty {
             bookmarkAS.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         } else {
-            
             for bookmark in bookmarks {
                 bookmarkAS.addAction(UIAlertAction(title: bookmark, style: .Default, handler: { (action) -> Void in
                     self.searchBarOUTLET.text = bookmark
@@ -118,7 +113,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
             }
             bookmarkAS.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
         }
-        
         self.presentViewController(bookmarkAS, animated: true, completion: nil)
     }
     
@@ -144,32 +138,66 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
                         self.bookmarks = self.bookmarks.filter({ $0 != bookmark })
                     }))
                     self.presentViewController(deleteAlert, animated: true, completion: nil)
-                    
                 }))
             }
             deleteAS.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
         }
-        
         self.presentViewController(deleteAS, animated: true, completion: nil)
+    }
+}
+
+extension SearchUserViewController: UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerTransitioningDelegate {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.userData.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        guard let reuseUserSearchCell = self.userCollectionView.dequeueReusableCellWithReuseIdentifier(kReuseID, forIndexPath: indexPath) as? UserSearchCollectionViewCell else { fatalError() }
+        reuseUserSearchCell.owner = userData[indexPath.row]
+        
+        return reuseUserSearchCell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier(kSearchUserToUserDetailSegueID, sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "FromSearchUserToUserProfile" {
+            if let upvc = segue.destinationViewController as? UserProfileViewController {
+                upvc.transitioningDelegate = self
+                if let indexPath = self.userCollectionView.indexPathsForSelectedItems()?.first {
+                    let clickedOwner = self.userData[indexPath.row]
+                    upvc.owner = clickedOwner
+                }
+            }
+        }
+    }
+    
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    {
+        return self.customTransition
     }
     
 }
 
-extension SearchViewController: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.repodata.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseRepoCell = self.searchTableView.dequeueReusableCellWithIdentifier("searchTableViewCell", forIndexPath: indexPath)
-        reuseRepoCell.textLabel?.text = self.repodata[indexPath.row].name
-        reuseRepoCell.detailTextLabel?.text = self.repodata[indexPath.row].desc
-        
-        return reuseRepoCell
-    }
-    
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

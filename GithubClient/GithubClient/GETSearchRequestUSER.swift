@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GETSearchRequestREPO: APIRequest {
+class GETSearchRequestUSER: APIRequest {
     var httpMethod = HTTPMethod.GET
     var headerContentType = MIMEType.ApplicationJSON
     
@@ -18,7 +18,7 @@ class GETSearchRequestREPO: APIRequest {
     }
     
     func url() -> String {
-        return "https://api.github.com/search/repositories"
+        return "https://api.github.com/search/users"
     }
     
     func queryStringParam() -> [String : String]? {
